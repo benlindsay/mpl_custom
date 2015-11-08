@@ -1,5 +1,6 @@
 from __future__ import division
 import matplotlib as mpl
+import matplotlib.pyplot as plt
 from matplotlib.ticker import MultipleLocator
 
 mpl.rcParams['xtick.major.size'] = 10
