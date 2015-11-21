@@ -3,6 +3,7 @@ from __future__ import division
 from matplotlib import rcParams
 import matplotlib.pyplot as plt
 from matplotlib.ticker import MultipleLocator
+from cycler import cycler
 
 #colorbrewer2 Dark2 qualitative color table
 dark2_colors = [(0.10588235294117647, 0.6196078431372549, 0.4666666666666667),
@@ -29,8 +30,9 @@ def customize_mpl(customColors=True):
     rcParams['ytick.minor.width'] = 1.0
     rcParams['axes.linewidth'] = 2.0
     rcParams['axes.labelsize'] = 20
-    if customColors:
-        rcParams['axes.color_cycle'] = dark2_colors
+    cyc = ( cycler('color', dark2_colors) +
+        cycler('linestyle', ['-', '--', ':', '-.', '-', '--', ':', '-.']) )
+    plt.rc('axes', prop_cycle=cyc)
     rcParams['xtick.labelsize'] = 'large'
     rcParams['ytick.labelsize'] = 'large'
     rcParams['figure.figsize'] = (8.0, 6.0)
