@@ -20,7 +20,7 @@ default_colors = ['b', 'g', 'r', 'c', 'm', 'y', 'k']
 def get_colors():
     return dark2_colors
 
-def customize_mpl(custom_colors=True):
+def big_settings():
     """Tweak matplotlib visual style"""
     rcParams['xtick.major.size'] = 10
     rcParams['xtick.major.width'] = 1.0
@@ -32,10 +32,6 @@ def customize_mpl(custom_colors=True):
     rcParams['ytick.minor.width'] = 1.0
     rcParams['axes.linewidth'] = 2.0
     rcParams['axes.labelsize'] = 20
-    if custom_colors:
-        cyc = ( cycler('color', dark2_colors) +
-            cycler('linestyle', ['-', '--', ':', '-.', '-', '--', ':', '-.']) )
-        plt.rc('axes', prop_cycle=cyc)
     rcParams['xtick.labelsize'] = 'large'
     rcParams['ytick.labelsize'] = 'large'
     rcParams['figure.figsize'] = (8.0, 6.0)
@@ -62,7 +58,7 @@ def add_minorticks(ax=None, xfreq=2, yfreq=2):
     ax.xaxis.set_minor_locator(xminorLocator)
     ax.yaxis.set_minor_locator(yminorLocator)
 
-def long_ticks(length=10.0, width=1.0):
+def set_tick_size(length=10.0, width=1.0):
     rcParams['xtick.major.size'] = length
     rcParams['xtick.major.width'] = width
     rcParams['xtick.minor.size'] = length / 2.0
@@ -72,17 +68,17 @@ def long_ticks(length=10.0, width=1.0):
     rcParams['ytick.minor.size'] = length / 2.0
     rcParams['ytick.minor.width'] = width
 
-def thick_borders(thickness=2.0):
-    rcParams['axes.linewidth'] = thickness
+def set_border_linewidth(linewidth=2.0):
+    rcParams['axes.linewidth'] = linewidth
 
-def thick_lines(thickness=2.0):
-    rcParams['lines.linewidth'] = thickness
+def set_linewidth(linewidth=2.0):
+    rcParams['lines.linewidth'] = linewidth
 
-def hi_res(res=150):
-    rcParams['figure.dpi'] = res
-    rcParams['savefig.dpi'] = res
+def set_dpi(dpi=150):
+    rcParams['figure.dpi'] = dpi
+    rcParams['savefig.dpi'] = dpi
 
-def use_dark2_colors(dashes=False):
+def set_dark2_colors(dashes=False):
     if dashes:
         linestyle = ['-', '--', ':', '-.', '-', '--', ':', '-.']
     else:
@@ -90,7 +86,7 @@ def use_dark2_colors(dashes=False):
     cyc = ( cycler('color', dark2_colors) + cycler('linestyle', linestyle) )
     plt.rc('axes', prop_cycle=cyc)
 
-def use_default_colors(dashes=False):
+def set_default_colors(dashes=False):
     if dashes:
         linestyle = ['-', '--', ':', '-.', '-', '--', ':']
     else:
